@@ -6,7 +6,8 @@ package 'git'
 # --- Set host name ---
 # Note how this is plain Ruby code, so we can define variables to
 # DRY up our code:
-hostname = 'epd-dokku.local'
+# hostname = 'epd-dokku.local'
+hostname = 'chef-test-vm.local'
 # username is pretty fragile...
 username = File.basename(Dir['/home/*'].first)
 
@@ -14,16 +15,21 @@ file '/etc/motd' do
   content "#{hostname}\n\nThis server does: \n-Dokku"
 end
 
+
+######################
+# Configure Hostname #
+######################
+
 file '/etc/hostname' do
   content "#{hostname}\n"
 end
 
-service 'hostname.sh' do
-  action :restart
-end
-
 file '/etc/hosts' do
   content "127.0.0.1 localhost #{hostname}\n"
+end
+
+execute "/bin/hostname" do
+  command "/bin/hostname #{hostname}"
 end
 
 
@@ -47,3 +53,10 @@ end
     content "bash_display_style=server"
   end
 end
+
+
+#################
+# Dokku Install #
+#################
+
+#
