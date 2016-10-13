@@ -1,0 +1,5 @@
+source 'https://supermarket.chef.io'
+
+cookbook 'hostname', '~> 0.4.0'
+
+metadata
