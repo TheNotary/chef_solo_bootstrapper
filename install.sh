@@ -4,6 +4,7 @@
 
 # chef_binary=/var/lib/gems/1.9.1/bin/chef-solo
 # chef_binary=/usr/local/bin/chef-solo
+user_name=vagrant
 chef_binary=/usr/bin/chef-solo
 ruby_binary=/usr/local/rvm/rubies/ruby-2.3.1/bin/ruby
 berks_binary=/usr/local/rvm/gems/ruby-2.3.1/bin/berks
@@ -26,7 +27,7 @@ fi &&
 if ! test -f "$ruby_binary"; then
   gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
   \curl -sSL https://get.rvm.io | bash -s stable --ruby=2.3.1
-  chown -R vagrant /usr/local/rvm
+  chown -R ${user_name} /usr/local/rvm
   echo "---\ngem: --no-ri --no-rdoc" > ~/.gemrc
 
   bash -l -c "gem install chef -v 12.10.24"
@@ -34,15 +35,15 @@ if ! test -f "$ruby_binary"; then
 fi &&
 
 # Use Knife to manually download required cookbooks
-  # mkdir -p /home/vagrant/.chef/cookbooks
-  # cd /home/vagrant/.chef/cookbooks
+  # mkdir -p /home/${user_name}/.chef/cookbooks
+  # cd /home/${user_name}/.chef/cookbooks
   # git init
   # git commit --allow-empty -m "inits repo"
   # cd ~/chef
 
 bash -l -c "cd cookbooks/* && ${berks_binary} vendor ../ && cd ../.."
-chown -R vagrant /home/vagrant
-chown -R vagrant /usr/local/rvm
+chown -R ${user_name} /home/${user_name}
+chown -R ${user_name} /usr/local/rvm
 
 bash -l -c "sudo chef-solo -c solo.rb"
 # bash -l -c "${chef_binary} -c solo.rb -j solo.json"
