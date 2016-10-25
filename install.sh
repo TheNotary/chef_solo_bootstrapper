@@ -45,5 +45,5 @@ bash -l -c "cd cookbooks/* && ${berks_binary} vendor ../ && cd ../.."
 chown -R ${user_name} /home/${user_name}
 chown -R ${user_name} /usr/local/rvm
 
-bash -l -c "sudo chef-solo -c solo.rb"
+bash -l -c "rvmsudo chef-solo -c solo.rb"
 # bash -l -c "${chef_binary} -c solo.rb -j solo.json"
