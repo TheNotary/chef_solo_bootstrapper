@@ -2,8 +2,7 @@
 package 'ntp'
 package 'sysstat'
 package 'git'
-package 'make'
-package 'gcc'
+package 'nload'
 
 # --- Set host name ---
 # Note how this is plain Ruby code, so we can define variables to

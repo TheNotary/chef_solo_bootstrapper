@@ -4,7 +4,7 @@
 # Usage: ./deploy.sh [host]
 
 host="${1:-ubuntu@WEBSITE.com}"
-#host="chef-test-vm.local"
+#host="chef-test-vm"
 
 # The host key might change when we instantiate a new VM, so
 # we remove (-R) the old host key from known_hosts
