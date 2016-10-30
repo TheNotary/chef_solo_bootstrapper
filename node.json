@@ -1,4 +1,4 @@
 {
   "COMMENT": "The file named node.json is the configuration file that specifies specifics about the node, such as which recipies will be run on the node (ie the server being configured) and it's variables.",
-  "run_list": [ "recipe[op::default]", "recipe[my_hostname::default]" ]
+  "run_list": [ "recipe[op::default]", "recipe[name-of-server::default]" ]
 }

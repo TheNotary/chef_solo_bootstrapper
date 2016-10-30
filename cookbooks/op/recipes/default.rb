@@ -7,7 +7,7 @@ package 'nload'
 # --- Set host name ---
 # Note how this is plain Ruby code, so we can define variables to
 # DRY up our code:
-# hostname = 'epd-dokku.local'
+# hostname = 'name-of-server.local'
 hostname = 'chef-test-vm.local'
 # username is pretty fragile...
 username = File.basename(Dir['/home/*'].first)
@@ -17,8 +17,9 @@ username = "vagrant"
 
 etc_motd_file = ""
 
-etc_motd_file += "#{hostname}\n\nThis server does: \n-Dokku"
+etc_motd_file += "#{hostname}\n\nThis server provides the services of: \n"
 
+etc_motd_file += "  -Blah..."
 
 
 #########################

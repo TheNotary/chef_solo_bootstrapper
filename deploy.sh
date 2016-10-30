@@ -1,10 +1,10 @@
 #!/bin/bash
 
-
 # Usage: ./deploy.sh [host]
 
+# The host you specify below must be setup for ssh logins
 host="${1:-ubuntu@WEBSITE.com}"
-#host="chef-test-vm"
+host="chef_tester"
 
 # The host key might change when we instantiate a new VM, so
 # we remove (-R) the old host key from known_hosts
